@@ -1,0 +1,13 @@
+*.o
+*.rom
+*.bin
+*.obj
+*.exe
+*.bak
+*~
+debug/
+Debug/
+Release/
+bin/
+doc/
+.DS_Store
