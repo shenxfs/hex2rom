@@ -14,6 +14,12 @@
 
 using namespace std;
 
+#ifdef _MSC_VER
+typedef unsigned short int  uint16_t;
+typedef unsigned long int   uint32_t;
+typedef unsigned char       uint8_t;
+#endif
+
 /// @brief HEX record struct
 typedef struct{
   uint16_t raw_addr; ///<偏移地址
@@ -114,7 +120,7 @@ bool getHex(HEXRECORD *pd, string &hexstr)
       {
         ss.str(hexstr.substr(pos, 2));
         ss >> hex >> by;
-        pd->buf[ind] = by;
+        pd->buf[ind] = (char)by;
         pos += 2;
         chksum += by;
         ind++;
@@ -170,7 +176,7 @@ int main(int argc, char *argv[])
   ifstream fin;
   ofstream fout;
   char pbuffer[65536];
-  char pads[256] = {0x00, 0x00, 0x85, 0x86, 0x08};
+  char pads[256] = {'\x00', '\x00', '\x85', '\x86', '\x08'};
   uint16_t pad = 0;
   size_t minSize = 32768;
   string binName("");

@@ -11,7 +11,7 @@ VPATH = src
 CXX = g++
 STRIP = strip
 ifeq ($(HOST),win32)
-CPPFLAGS = -g -o2 -Wall -I$(INCLUDE)  -finput-charset=utf_8 -fexec-charset=gbk
+CPPFLAGS = -g -o2 -Wall -I$(INCLUDE)  -finput-charset=utf-8 -fexec-charset=gbk
 PREFIX ?= /c/windows
 SUDO :=
 INSTALL = cp
@@ -21,7 +21,7 @@ else
 CPPFLAGS = -g -o2 -Wall -I$(INCLUDE)
 SUDO ?= sudo
 INSTALL =install -m 644
-PREFIX ? = /usr/bin
+PREFIX ?= /usr/bin
 LDFLAGS =   
 BINFILE=hex2rom
 LDFLAGS =
